@@ -18,40 +18,26 @@
             background: rgba(0, 0, 0, 0.6);
         }
         h1 {
-            margin: 0;
             font-size: 2.5em;
-        }
-        p {
-            font-size: 1.2em;
-            margin: 20px 0;
+            margin: 0;
         }
         .content {
             margin: 20px auto;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
-            max-width: 800px;
+            max-width: 900px;
+            text-align: left;
+        }
+        pre {
+            background: black;
+            color: lightgreen;
+            padding: 10px;
+            border-radius: 5px;
         }
         .exercise {
-            margin: 20px 0;
-        }
-        #successMessage {
-            display: none;
-            color: pink;
-            font-size: 1.5em;
-            margin: 20px 0;
-        }
-        #nextLesson {
-            display: none;
-            padding: 10px 20px;
-            background-color: green;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-        }
-        #nextLesson:hover {
-            background-color: darkgreen;
+            margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
@@ -60,37 +46,88 @@
         <h1>Leçon 2 : Variables et Types</h1>
     </header>
     <div class="content">
-        <p>Les variables en Python sont utilisées pour stocker des données. Vous n'avez pas besoin de spécifier leur type (comme "int" ou "str"), car Python le détermine automatiquement. Voici un exemple :</p>
-        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
-# Exemple de variables
+        <h2>Introduction aux Variables</h2>
+        <p>Une variable est un conteneur qui permet de stocker des informations. Ces informations peuvent être de différents types, comme du texte, des nombres ou des valeurs booléennes. En Python, il n'est pas nécessaire de déclarer le type de la variable à l'avance. Python le déduit automatiquement.</p>
+        
+        <h3>Création de Variables</h3>
+        <p>Pour créer une variable, il suffit de lui donner un nom et de lui attribuer une valeur :</p>
+        <pre>
+# Exemple simple de création de variable
 nom = "Alice"
-age = 25
+age = 30
 est_etudiant = True
-
-print(nom, age, est_etudiant)
         </pre>
-        <div class="exercise">
-            <p><strong>Exercice :</strong></p>
-            <p>Créez une variable appelée "message" qui contient la chaîne "Apprendre Python est amusant!". Affichez cette variable. Saisissez votre code ci-dessous :</p>
-            <textarea id="userCode" rows="4" cols="50" placeholder="message = 'Apprendre Python est amusant!'
-print(message)"></textarea>
-            <br>
-            <button onclick="checkExercise()">Vérifier</button>
-            <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
-            <a id="nextLesson" href="lesson3.html">Leçon suivante</a>
-        </div>
+
+        <h3>Règles pour les noms de variables</h3>
+        <ul>
+            <li>Les noms de variables doivent commencer par une lettre ou un underscore (_).</li>
+            <li>Ils ne doivent pas contenir d'espaces ni commencer par un chiffre.</li>
+            <li>Ils doivent être descriptifs pour faciliter la lecture du code.</li>
+        </ul>
+
+        <h2>Types de données en Python</h2>
+        <p>Python prend en charge plusieurs types de données courants :</p>
+        <ul>
+            <li><strong>Chaînes de caractères</strong> (<code>str</code>) : pour stocker du texte.</li>
+            <li><strong>Nombres entiers</strong> (<code>int</code>) : pour des nombres sans décimales.</li>
+            <li><strong>Nombres flottants</strong> (<code>float</code>) : pour des nombres avec décimales.</li>
+            <li><strong>Booléens</strong> (<code>bool</code>) : <code>True</code> ou <code>False</code>.</li>
+        </ul>
+        <pre>
+# Exemples de types de données
+prenom = "Jean"  # Chaîne
+age = 25         # Entier
+poids = 70.5     # Flottant
+est_adulte = True # Booléen
+        </pre>
+
+        <h3>Fonction <code>type()</code></h3>
+        <p>Vous pouvez utiliser la fonction <code>type()</code> pour vérifier le type d'une variable :</p>
+        <pre>
+# Vérification du type
+print(type(prenom))  # <class 'str'>
+print(type(age))     # <class 'int'>
+print(type(poids))   # <class 'float'>
+print(type(est_adulte))  # <class 'bool'>
+        </pre>
+
+        <h3>Conversion entre types</h3>
+        <p>Vous pouvez convertir une variable d'un type à un autre à l'aide de fonctions comme <code>str()</code>, <code>int()</code>, et <code>float()</code>.</p>
+        <pre>
+# Conversion
+nombre = "42"
+nombre_entier = int(nombre)  # Convertit "42" (str) en 42 (int)
+texte = str(nombre_entier)   # Convertit 42 (int) en "42" (str)
+        </pre>
+
+        <h2>Bonnes pratiques</h2>
+        <ul>
+            <li>Donnez des noms explicites aux variables.</li>
+            <li>Évitez les noms trop courts ou non significatifs (par exemple, <code>a</code>, <code>b</code>).</li>
+            <li>Écrivez le code de manière à ce qu'il soit lisible pour les autres développeurs.</li>
+        </ul>
+
+        <h2>Exercice pratique</h2>
+        <p>Créez les variables suivantes :</p>
+        <ul>
+            <li>Une variable <code>nom</code> contenant votre nom.</li>
+            <li>Une variable <code>age</code> contenant votre âge.</li>
+            <li>Une variable <code>est_developpeur</code> contenant la valeur <code>True</code>.</li>
+        </ul>
+        <p>Affichez les trois variables. Entrez votre code ci-dessous :</p>
+        <textarea id="userCode" rows="6" cols="60" placeholder="nom = 'VotreNom'\nage = 25\nest_developpeur = True\nprint(nom, age, est_developpeur)"></textarea>
+        <br><br>
+        <button onclick="checkExercise()">Vérifier</button>
+        <p id="successMessage" style="display:none; color: lightgreen;">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
+        <a id="nextLesson" href="lesson3.html" style="display:none; color: white; background: green; padding: 10px; border-radius: 5px;">Leçon suivante</a>
     </div>
     <script>
         function checkExercise() {
             const userCode = document.getElementById('userCode').value.trim();
-            const correctAnswer = "message = 'Apprendre Python est amusant!'
-print(message)";
-            const successMessage = document.getElementById('successMessage');
-            const nextLesson = document.getElementById('nextLesson');
-
+            const correctAnswer = `nom = 'VotreNom'\nage = 25\nest_developpeur = True\nprint(nom, age, est_developpeur)`;
             if (userCode === correctAnswer) {
-                successMessage.style.display = 'block';
-                nextLesson.style.display = 'inline-block';
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('nextLesson').style.display = 'inline-block';
             } else {
                 alert('Votre réponse est incorrecte. Essayez encore !');
             }
