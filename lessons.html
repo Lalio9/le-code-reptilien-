@@ -7,54 +7,109 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             color: #006400; /* Vert foncé pour le texte */
             text-align: center;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/f8/Green_Tree_Python_%28Morelia_viridis%29.jpg'); /* Image de serpent */
-            background-size: cover; /* Assure que l'image couvre toute la fenêtre */
-            background-position: center; /* Centre l'image */
-            font-style: italic; /* Texte en italique */
-            height: 100vh; /* Remplir toute la hauteur de l'écran */
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/f8/Green_Tree_Python_%28Morelia_viridis%29.jpg');
+            background-size: cover;
+            background-position: center;
+            font-style: italic;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff; /* Texte en blanc pour contraster avec l'arrière-plan */
+            animation: fadeIn 2s ease-out; /* Animation de transition */
         }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         header {
             padding: 20px;
-            background: rgba(0, 0, 0, 0.6); /* Fond sombre semi-transparent pour le header */
+            background: rgba(0, 0, 0, 0.7); /* Fond sombre semi-transparent pour le header */
+            border-radius: 10px;
+            margin-bottom: 40px;
         }
+
         h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 3em;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Ombre autour du texte pour le faire ressortir */
+            color: #ffff00; /* Jaune pour attirer l'attention sur le titre */
         }
+
         p {
             font-size: 1.2em;
             margin: 20px 0;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 20px auto;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6); /* Ombre subtile pour plus de lisibilité */
         }
+
         .lesson-list {
             margin: 20px auto;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.7); /* Fond sombre pour la liste des leçons */
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
             max-width: 800px;
+            animation: slideIn 1s ease-out;
         }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         .lesson-list a {
             display: block;
-            margin: 10px 0;
-            padding: 10px;
-            background: #006400; /* Vert foncé pour les liens */
-            color: white;
+            margin: 15px 0;
+            padding: 15px;
+            background: linear-gradient(135deg, #006400, #004d00);
+            color: #fff;
             text-decoration: none;
-            font-size: 1.2em;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            font-size: 1.3em;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Ombre pour un effet de profondeur */
         }
+
         .lesson-list a:hover {
-            background: #004d00; /* Vert encore plus foncé au survol */
+            background: linear-gradient(135deg, #004d00, #003300);
+            transform: translateY(-5px); /* Effet de survol pour donner du mouvement */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Ombre plus marquée au survol */
+        }
+
+        .lesson-list a:active {
+            transform: translateY(2px); /* Effet de pression pour un aspect interactif */
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer {
+            margin-top: 50px;
+            color: #ffff00;
+            font-size: 1.1em;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Nos Leçons</h1>
-        <p>Nos leçons sont simples et rapides et vous enseignent rapidement les bases de Python. Si vous souhaitez approfondir vos connaissances, nous recommandons de nous en avertir pour que nous créions un autre site.</p>
+        <p>Nos leçons sont simples et rapides et vous enseignent rapidement les bases de Python. Si vous souhaitez approfondir vos connaissances, nous vous encourageons à nous en informer pour que nous créions un autre site.</p>
     </header>
     <div class="lesson-list">
         <a href="lesson1.html">Leçon 1 : Introduction à Python</a>
@@ -68,5 +123,8 @@
         <a href="lesson9.html">Leçon 9 : Modules</a>
         <a href="lesson10.html">Leçon 10 : Classes et Objets</a>
     </div>
+    <div class="footer">
+        <p>Développez vos compétences en Python avec <span style="font-weight: bold;">Code Reptilien</span> !</p>
+    </div>
 </body>
-</html>         
+</html>
