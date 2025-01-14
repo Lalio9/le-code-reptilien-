@@ -21,6 +21,9 @@
             margin: 0;
             font-size: 2.5em;
         }
+        h2, h3 {
+            margin-top: 20px;
+        }
         p {
             font-size: 1.2em;
             margin: 20px 0;
@@ -30,14 +33,26 @@
             padding: 20px;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
-            max-width: 800px;
+            max-width: 900px;
+            text-align: left;
+        }
+        pre {
+            background: black;
+            color: lightgreen;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        ul {
+            line-height: 1.8;
         }
         .exercise {
             margin: 20px 0;
+            text-align: center;
         }
         #successMessage {
             display: none;
-            color: pink;
+            color: lightgreen;
             font-size: 1.5em;
             margin: 20px 0;
         }
@@ -60,22 +75,103 @@
         <h1>Leçon 8 : Dictionnaires</h1>
     </header>
     <div class="content">
-        <p>Les dictionnaires stockent des paires clé-valeur. Exemple :</p>
-        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
+        <h2>1. Introduction aux Dictionnaires</h2>
+        <p>Les dictionnaires en Python sont des structures de données qui stockent des paires clé-valeur. Chaque élément du dictionnaire a une clé unique, et vous pouvez y accéder en utilisant cette clé.</p>
+        <p>Les dictionnaires sont particulièrement utiles pour associer des informations liées entre elles, comme dans un carnet d'adresses ou une base de données simple.</p>
+        
+        <h2>2. Créer un Dictionnaire</h2>
+        <p>Un dictionnaire est créé en utilisant des accolades <code>{}</> et en séparant chaque paire clé-valeur par une virgule. La clé et la valeur sont séparées par un deux-points <code>:</code>.</p>
+        <pre>
 # Exemple de dictionnaire
 personne = {"nom": "Alice", "âge": 25}
-print(personne["nom"])
+print(personne["nom"])  # Affiche "Alice"
         </pre>
-        <div class="exercise">
-            <p><strong>Exercice :</strong></p>
-            <p>Créez un dictionnaire appelé `animal` avec les clés `nom`, `type`, et `âge`. Affectez des valeurs appropriées à chaque clé. Saisissez votre code ci-dessous :</p>
-            <textarea id="userCode" rows="4" cols="50" placeholder="animal = {'nom': 'Python', 'type': 'serpent', 'âge': 3}">
-            </textarea>
-            <br>
-            <button onclick="checkExercise()">Vérifier</button>
-            <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
-            <a id="nextLesson" href="lesson9.html">Leçon suivante</a>
-        </div>
+        <p>Dans cet exemple, le dictionnaire <code>personne</code> contient deux paires : "nom" et "âge".</p>
+
+        <h2>3. Accéder aux Valeurs</h2>
+        <p>Pour accéder à une valeur dans un dictionnaire, vous utilisez la clé entre crochets. Par exemple :</p>
+        <pre>
+# Accéder à une valeur avec la clé
+print(personne["âge"])  # Affiche 25
+        </pre>
+        <p>Si vous tentez d'accéder à une clé qui n'existe pas, Python lèvera une exception <code>KeyError</code>.</p>
+
+        <h3>3.1 Utiliser la méthode <code>get()</code></h3>
+        <p>Une façon plus sûre d'accéder à une valeur est d'utiliser la méthode <code>get()</code>, qui retourne <code>None</code> si la clé n'existe pas, plutôt que de lever une exception :</p>
+        <pre>
+# Utilisation de get()
+print(personne.get("nom"))  # Affiche "Alice"
+print(personne.get("adresse"))  # Affiche None
+        </pre>
+
+        <h2>4. Ajouter ou Modifier des Éléments</h2>
+        <p>Vous pouvez ajouter une nouvelle paire clé-valeur ou modifier une valeur existante en utilisant une clé :</p>
+        <pre>
+# Ajouter ou modifier une valeur
+personne["profession"] = "Développeur"
+personne["âge"] = 26
+print(personne)  # Affiche {"nom": "Alice", "âge": 26, "profession": "Développeur"}
+        </pre>
+
+        <h2>5. Supprimer des Éléments</h2>
+        <p>Vous pouvez supprimer une paire clé-valeur d'un dictionnaire de plusieurs manières :</p>
+        <ul>
+            <li><code>del</code> : pour supprimer une clé et sa valeur.</li>
+            <li><code>pop()</code> : pour supprimer une clé spécifique et retourner sa valeur.</li>
+            <li><code>clear()</code> : pour supprimer toutes les paires du dictionnaire.</li>
+        </ul>
+        <pre>
+# Supprimer une clé
+del personne["profession"]
+print(personne)  # Affiche {"nom": "Alice", "âge": 26}
+
+# Utiliser pop pour supprimer et obtenir la valeur
+âge = personne.pop("âge")
+print(âge)  # Affiche 26
+print(personne)  # Affiche {"nom": "Alice"}
+
+# Supprimer toutes les paires
+personne.clear()
+print(personne)  # Affiche {}
+        </pre>
+
+        <h2>6. Itérer sur un Dictionnaire</h2>
+        <p>Vous pouvez parcourir les clés ou les valeurs d'un dictionnaire en utilisant une boucle <code>for</code> :</p>
+        <pre>
+# Itérer sur les clés
+for clé in personne:
+    print(clé)
+
+# Itérer sur les valeurs
+for valeur in personne.values():
+    print(valeur)
+
+# Itérer sur les clés et les valeurs
+for clé, valeur in personne.items():
+    print(clé, valeur)
+        </pre>
+
+        <h2>7. Exercice Interactif</h2>
+        <p>Créez un dictionnaire appelé <code>animal</code> avec les clés <code>nom</code>, <code>type</code>, et <code>âge</code>. Affectez des valeurs appropriées à chaque clé. Saisissez votre code ci-dessous :</p>
+        <textarea id="userCode" rows="6" cols="60" placeholder="animal = {'nom': 'Python', 'type': 'serpent', 'âge': 3}"></textarea>
+        <br>
+        <button onclick="checkExercise()">Vérifier</button>
+        <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
+        <a id="nextLesson" href="lesson9.html">Leçon suivante</a>
+
+        <h2>8. Exercices Supplémentaires</h2>
+        <ul>
+            <li><strong>Exercice 1 :</strong> Créez un dictionnaire contenant des informations sur un livre, avec des clés comme <code>titre</code>, <code>auteur</code>, <code>année</code>, et <code>genre</code>.</li>
+            <li><strong>Exercice 2 :</strong> Créez un dictionnaire représentant une voiture avec des clés comme <code>marque</code>, <code>modèle</code>, <code>année</code>, et <code>couleur</code>. Modifiez ensuite la couleur de la voiture.</li>
+            <li><strong>Exercice 3 :</strong> Créez un dictionnaire avec les résultats de vos examens. Utilisez des clés pour chaque matière et associez-leur une valeur pour la note obtenue.</li>
+        </ul>
+
+        <h2>9. Défis Supplémentaires</h2>
+        <ul>
+            <li><strong>Défi 1 :</strong> Créez une fonction qui prend un dictionnaire contenant des informations sur une personne et affiche un résumé des informations de cette personne.</li>
+            <li><strong>Défi 2 :</strong> Créez une fonction qui prend un dictionnaire représentant un panier d'achat et calcule le total de la facture en fonction des prix des articles.</li>
+            <li><strong>Défi 3 :</strong> Créez un dictionnaire où chaque clé est un mois de l'année et chaque valeur est le nombre de jours dans ce mois. Implémentez une fonction qui retourne le mois avec le plus de jours.</li>
+        </ul>
     </div>
     <script>
         function checkExercise() {
