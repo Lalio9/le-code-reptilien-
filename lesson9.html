@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 9 : Gestion des erreurs</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/f/f8/Green_Tree_Python_%28Morelia_viridis%29.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .content {
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            max-width: 800px;
+        }
+        .exercise {
+            margin: 20px 0;
+        }
+        #successMessage {
+            display: none;
+            color: pink;
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        #nextLesson {
+            display: none;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+        #nextLesson:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Leçon 9 : Gestion des erreurs</h1>
+    </header>
+    <div class="content">
+        <p>La gestion des erreurs vous permet de gérer les exceptions qui se produisent pendant l'exécution de votre programme. Exemple :</p>
+        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
+# Exemple de gestion des erreurs
+try:
+    x = 1 / 0
+except ZeroDivisionError:
+    print("Erreur : division par zéro.")
+else:
+    print("Aucune erreur.")
+        </pre>
+        <div class="exercise">
+            <p><strong>Exercice :</strong></p>
+            <p>Essayez de diviser un nombre par zéro et utilisez un `try-except` pour afficher un message d'erreur. Saisissez votre code ci-dessous :</p>
+            <textarea id="userCode" rows="4" cols="50" placeholder="try:
+    x = 1 / 0
+except ZeroDivisionError:
+    print('Erreur : division par zéro')">
+            </textarea>
+            <br>
+            <button onclick="checkExercise()">Vérifier</button>
+            <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
+            <a id="nextLesson" href="lesson10.html">Leçon suivante</a>
+        </div>
+    </div>
+    <script>
+        function checkExercise() {
+            const userCode = document.getElementById('userCode').value.trim();
+            const correctAnswer = "try:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print('Erreur : division par zéro')";
+            const successMessage = document.getElementById('successMessage');
+            const nextLesson = document.getElementById('nextLesson');
+
+            if (userCode === correctAnswer) {
+                successMessage.style.display = 'block';
+                nextLesson.style.display = 'inline-block';
+            } else {
+                alert('Votre réponse est incorrecte. Essayez encore !');
+            }
+        }
+    </script>
+</body>
+</html>

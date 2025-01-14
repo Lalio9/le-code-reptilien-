@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 10 : Modules</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/f/f8/Green_Tree_Python_%28Morelia_viridis%29.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .content {
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            max-width: 800px;
+        }
+        .exercise {
+            margin: 20px 0;
+        }
+        #successMessage {
+            display: none;
+            color: pink;
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        #nextLesson {
+            display: none;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+        #nextLesson:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Leçon 10 : Modules</h1>
+    </header>
+    <div class="content">
+        <p>Les modules en Python vous permettent de réutiliser du code. Voici un exemple d'importation de module :</p>
+        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
+# Exemple d'importation
+import math
+print(math.sqrt(16))
+        </pre>
+        <div class="exercise">
+            <p><strong>Exercice :</strong></p>
+            <p>Importez le module `math` et affichez la racine carrée de 25. Saisissez votre code ci-dessous :</p>
+            <textarea id="userCode" rows="4" cols="50" placeholder="import math
+print(math.sqrt(25))">
+            </textarea>
+            <br>
+            <button onclick="checkExercise()">Vérifier</button>
+            <p id="successMessage">Félicitations ! Vous avez terminé !</p>
+        </div>
+    </div>
+    <script>
+        function checkExercise() {
+            const userCode = document.getElementById('userCode').value.trim();
+            const correctAnswer = "import math\nprint(math.sqrt(25))";
+            const successMessage = document.getElementById('successMessage');
+
+            if (userCode === correctAnswer) {
+                successMessage.style.display = 'block';
+            } else {
+                alert('Votre réponse est incorrecte. Essayez encore !');
+            }
+        }
+    </script>
+</body>
+</html>

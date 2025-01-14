@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 1 : Introduction à Python</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/f/f8/Green_Tree_Python_%28Morelia_viridis%29.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .content {
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            max-width: 800px;
+        }
+        .exercise {
+            margin: 20px 0;
+        }
+        #successMessage {
+            display: none;
+            color: pink;
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        #nextLesson {
+            display: none;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+        #nextLesson:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Leçon 1 : Introduction à Python</h1>
+    </header>
+    <div class="content">
+        <p>Python est un langage de programmation populaire pour sa simplicité et sa lisibilité. Python permet aux développeurs de créer des programmes efficaces avec un minimum de code. Ce langage est interprété, ce qui signifie que vous pouvez exécuter vos scripts directement sans avoir besoin de les compiler au préalable.</p>
+        <p>Exemple de code :</p>
+        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
+# Votre premier programme Python
+print("Bonjour, Python!")
+        </pre>
+        <div class="exercise">
+            <p><strong>Exercice :</strong></p>
+            <p>Écrivez un programme qui affiche "Bonjour, tout le monde!". Saisissez votre code ci-dessous :</p>
+            <textarea id="userCode" rows="4" cols="50" placeholder="print('Bonjour, tout le monde!')"></textarea>
+            <br>
+            <button onclick="checkExercise()">Vérifier</button>
+            <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
+            <a id="nextLesson" href="lesson2.html">Leçon suivante</a>
+        </div>
+    </div>
+    <script>
+        function checkExercise() {
+            const userCode = document.getElementById('userCode').value.trim();
+            const correctAnswer = "print('Bonjour, tout le monde!')";
+            const successMessage = document.getElementById('successMessage');
+            const nextLesson = document.getElementById('nextLesson');
+
+            if (userCode === correctAnswer) {
+                successMessage.style.display = 'block';
+                nextLesson.style.display = 'inline-block';
+            } else {
+                alert('Votre réponse est incorrecte. Essayez encore !');
+            }
+        }
+    </script>
+</body>
+</html>

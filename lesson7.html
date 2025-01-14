@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 7 : Listes</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/f/f8/Green_Tree_Python_%28Morelia_viridis%29.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .content {
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            max-width: 800px;
+        }
+        .exercise {
+            margin: 20px 0;
+        }
+        #successMessage {
+            display: none;
+            color: pink;
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        #nextLesson {
+            display: none;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+        #nextLesson:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Leçon 7 : Listes</h1>
+    </header>
+    <div class="content">
+        <p>Les listes en Python sont utilisées pour stocker plusieurs éléments. Vous pouvez y ajouter, supprimer et itérer facilement. Exemple :</p>
+        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
+# Exemple de liste
+fruits = ["pomme", "banane", "cerise"]
+fruits.append("orange")
+print(fruits)
+        </pre>
+        <div class="exercise">
+            <p><strong>Exercice :</strong></p>
+            <p>Créez une liste appelée `nombres` contenant les chiffres de 1 à 5. Ajoutez le chiffre 6 à la fin et affichez la liste. Saisissez votre code ci-dessous :</p>
+            <textarea id="userCode" rows="4" cols="50" placeholder="nombres = [1, 2, 3, 4, 5]
+nombres.append(6)
+print(nombres)">
+            </textarea>
+            <br>
+            <button onclick="checkExercise()">Vérifier</button>
+            <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
+            <a id="nextLesson" href="lesson8.html">Leçon suivante</a>
+        </div>
+    </div>
+    <script>
+        function checkExercise() {
+            const userCode = document.getElementById('userCode').value.trim();
+            const correctAnswer = "nombres = [1, 2, 3, 4, 5]\nnombres.append(6)\nprint(nombres)";
+            const successMessage = document.getElementById('successMessage');
+            const nextLesson = document.getElementById('nextLesson');
+
+            if (userCode === correctAnswer) {
+                successMessage.style.display = 'block';
+                nextLesson.style.display = 'inline-block';
+            } else {
+                alert('Votre réponse est incorrecte. Essayez encore !');
+            }
+        }
+    </script>
+</body>
+</html>

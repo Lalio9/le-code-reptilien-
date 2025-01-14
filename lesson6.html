@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 6 : Fonctions</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/f/f8/Green_Tree_Python_%28Morelia_viridis%29.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .content {
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            max-width: 800px;
+        }
+        .exercise {
+            margin: 20px 0;
+        }
+        #successMessage {
+            display: none;
+            color: pink;
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        #nextLesson {
+            display: none;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+        #nextLesson:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Leçon 6 : Fonctions</h1>
+    </header>
+    <div class="content">
+        <p>Les fonctions sont des blocs de code que vous pouvez réutiliser. Vous pouvez définir des fonctions avec le mot-clé `def`. Exemple :</p>
+        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
+# Exemple de fonction
+def saluer(nom):
+    print("Bonjour, " + nom + " !")
+
+saluer("Alice")
+        </pre>
+        <div class="exercise">
+            <p><strong>Exercice :</strong></p>
+            <p>Créez une fonction appelée `additionner` qui prend deux nombres en entrée et affiche leur somme. Saisissez votre code ci-dessous :</p>
+            <textarea id="userCode" rows="4" cols="50" placeholder="def additionner(a, b):
+    print(a + b)">
+            </textarea>
+            <br>
+            <button onclick="checkExercise()">Vérifier</button>
+            <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
+            <a id="nextLesson" href="lesson7.html">Leçon suivante</a>
+        </div>
+    </div>
+    <script>
+        function checkExercise() {
+            const userCode = document.getElementById('userCode').value.trim();
+            const correctAnswer = "def additionner(a, b):\n    print(a + b)";
+            const successMessage = document.getElementById('successMessage');
+            const nextLesson = document.getElementById('nextLesson');
+
+            if (userCode === correctAnswer) {
+                successMessage.style.display = 'block';
+                nextLesson.style.display = 'inline-block';
+            } else {
+                alert('Votre réponse est incorrecte. Essayez encore !');
+            }
+        }
+    </script>
+</body>
+</html>
