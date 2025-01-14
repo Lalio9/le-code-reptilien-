@@ -21,23 +21,34 @@
             margin: 0;
             font-size: 2.5em;
         }
-        p {
-            font-size: 1.2em;
-            margin: 20px 0;
+        h2, h3 {
+            margin-top: 20px;
         }
         .content {
             margin: 20px auto;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
-            max-width: 800px;
+            max-width: 900px;
+            text-align: left;
+        }
+        pre {
+            background: black;
+            color: lightgreen;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        ul {
+            line-height: 1.8;
         }
         .exercise {
             margin: 20px 0;
+            text-align: center;
         }
         #successMessage {
             display: none;
-            color: pink;
+            color: lightgreen;
             font-size: 1.5em;
             margin: 20px 0;
         }
@@ -60,30 +71,114 @@
         <h1>Leçon 6 : Fonctions</h1>
     </header>
     <div class="content">
-        <p>Les fonctions sont des blocs de code que vous pouvez réutiliser. Vous pouvez définir des fonctions avec le mot-clé `def`. Exemple :</p>
-        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
-# Exemple de fonction
+        <h2>1. Qu'est-ce qu'une fonction ?</h2>
+        <p>Une fonction est un bloc de code conçu pour effectuer une tâche spécifique. Les fonctions permettent de :</p>
+        <ul>
+            <li>Réutiliser du code.</li>
+            <li>Rendre votre programme plus structuré et facile à lire.</li>
+            <li>Réduire les erreurs en évitant la duplication.</li>
+        </ul>
+        <p>En Python, une fonction est définie avec le mot-clé <code>def</code>. Voici un exemple :</p>
+        <pre>
+# Définir une fonction
+def saluer():
+    print("Bonjour tout le monde !")
+
+# Appeler une fonction
+saluer()
+        </pre>
+
+        <h2>2. Passer des paramètres à une fonction</h2>
+        <p>Les fonctions peuvent recevoir des paramètres pour personnaliser leur comportement :</p>
+        <pre>
+# Fonction avec un paramètre
 def saluer(nom):
-    print("Bonjour, " + nom + " !")
+    print(f"Bonjour, {nom} !")
 
 saluer("Alice")
+saluer("Bob")
         </pre>
-        <div class="exercise">
-            <p><strong>Exercice :</strong></p>
-            <p>Créez une fonction appelée `additionner` qui prend deux nombres en entrée et affiche leur somme. Saisissez votre code ci-dessous :</p>
-            <textarea id="userCode" rows="4" cols="50" placeholder="def additionner(a, b):
-    print(a + b)">
-            </textarea>
-            <br>
-            <button onclick="checkExercise()">Vérifier</button>
-            <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
-            <a id="nextLesson" href="lesson7.html">Leçon suivante</a>
-        </div>
+        <p>Les paramètres permettent de rendre les fonctions plus flexibles.</p>
+
+        <h3>2.1 Valeurs par défaut</h3>
+        <p>Vous pouvez spécifier des valeurs par défaut pour les paramètres :</p>
+        <pre>
+def saluer(nom="ami"):
+    print(f"Bonjour, {nom} !")
+
+saluer()          # Utilise la valeur par défaut
+saluer("Alice")   # Remplace la valeur par défaut
+        </pre>
+
+        <h2>3. Valeur de retour</h2>
+        <p>Les fonctions peuvent renvoyer des valeurs grâce à l'instruction <code>return</code> :</p>
+        <pre>
+def additionner(a, b):
+    return a + b
+
+somme = additionner(5, 3)
+print(somme)  # Affiche 8
+        </pre>
+        <p>L'utilisation de <code>return</code> est essentielle pour obtenir des résultats exploitables.</p>
+
+        <h2>4. Portée des variables</h2>
+        <p>Les variables définies à l'intérieur d'une fonction sont locales à cette fonction :</p>
+        <pre>
+def afficher_nombre():
+    nombre = 10
+    print(nombre)
+
+afficher_nombre()
+# print(nombre)  # Erreur : 'nombre' n'existe pas en dehors de la fonction
+        </pre>
+
+        <h2>5. Fonction imbriquée et fonction lambda</h2>
+        <h3>5.1 Fonctions imbriquées</h3>
+        <p>Une fonction peut être définie à l'intérieur d'une autre :</p>
+        <pre>
+def fonction_principale():
+    def fonction_interne():
+        print("Bonjour depuis la fonction interne.")
+    fonction_interne()
+
+fonction_principale()
+        </pre>
+
+        <h3>5.2 Fonction lambda</h3>
+        <p>Les fonctions lambda sont des fonctions anonymes définies en une seule ligne :</p>
+        <pre>
+addition = lambda a, b: a + b
+print(addition(3, 5))  # Affiche 8
+        </pre>
+
+        <h2>6. Exercice interactif</h2>
+        <p>Créez une fonction appelée <code>multiplier</code> qui prend deux nombres en entrée et renvoie leur produit. Saisissez votre code ci-dessous :</p>
+        <textarea id="userCode" rows="6" cols="60" placeholder="def multiplier(a, b):
+    return a * b"></textarea>
+        <br>
+        <button onclick="checkExercise()">Vérifier</button>
+        <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
+        <a id="nextLesson" href="lesson7.html">Leçon suivante</a>
+
+        <h2>7. Exercices supplémentaires</h2>
+        <ul>
+            <li><strong>Exercice 1 :</strong> Créez une fonction qui renvoie la factorielle d'un nombre.</li>
+            <li><strong>Exercice 2 :</strong> Écrivez une fonction qui vérifie si une chaîne est un palindrome.</li>
+            <li><strong>Exercice 3 :</strong> Implémentez une fonction qui trouve le plus grand nombre dans une liste.</li>
+        </ul>
+
+        <h2>8. Défi supplémentaire</h2>
+        <p>Créez une fonction appelée <code>calculer</code> qui accepte trois paramètres : deux nombres et une chaîne représentant une opération (<code>"addition"</code>, <code>"soustraction"</code>, <code>"multiplication"</code>, ou <code>"division"</code>). La fonction doit effectuer l'opération demandée.</p>
+        <pre>
+# Exemple d'utilisation
+resultat = calculer(10, 5, "addition")
+print(resultat)  # Affiche 15
+        </pre>
     </div>
     <script>
         function checkExercise() {
             const userCode = document.getElementById('userCode').value.trim();
-            const correctAnswer = "def additionner(a, b):\n    print(a + b)";
+            const correctAnswer = "def multiplier(a, b):\n    return a * b";
             const successMessage = document.getElementById('successMessage');
             const nextLesson = document.getElementById('nextLesson');
 
@@ -97,3 +192,6 @@ saluer("Alice")
     </script>
 </body>
 </html>
+
+      
+          
