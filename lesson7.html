@@ -21,6 +21,9 @@
             margin: 0;
             font-size: 2.5em;
         }
+        h2, h3 {
+            margin-top: 20px;
+        }
         p {
             font-size: 1.2em;
             margin: 20px 0;
@@ -30,14 +33,26 @@
             padding: 20px;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
-            max-width: 800px;
+            max-width: 900px;
+            text-align: left;
+        }
+        pre {
+            background: black;
+            color: lightgreen;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        ul {
+            line-height: 1.8;
         }
         .exercise {
             margin: 20px 0;
+            text-align: center;
         }
         #successMessage {
             display: none;
-            color: pink;
+            color: lightgreen;
             font-size: 1.5em;
             margin: 20px 0;
         }
@@ -60,25 +75,104 @@
         <h1>Leçon 7 : Listes</h1>
     </header>
     <div class="content">
-        <p>Les listes en Python sont utilisées pour stocker plusieurs éléments. Vous pouvez y ajouter, supprimer et itérer facilement. Exemple :</p>
-        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
+        <h2>1. Introduction aux Listes</h2>
+        <p>Les listes sont des structures de données qui permettent de stocker plusieurs éléments dans une seule variable. Les éléments d'une liste peuvent être de différents types (nombres, chaînes de caractères, booléens, etc.) et peuvent être modifiés après leur création.</p>
+        <ul>
+            <li>Les éléments d'une liste sont indexés à partir de 0.</li>
+            <li>Les listes peuvent contenir des éléments de différents types.</li>
+            <li>Les listes sont mutables, ce qui signifie que vous pouvez les modifier après leur création.</li>
+        </ul>
+
+        <h2>2. Créer une Liste</h2>
+        <p>Voici un exemple simple pour créer une liste :</p>
+        <pre>
 # Exemple de liste
 fruits = ["pomme", "banane", "cerise"]
-fruits.append("orange")
 print(fruits)
         </pre>
-        <div class="exercise">
-            <p><strong>Exercice :</strong></p>
-            <p>Créez une liste appelée `nombres` contenant les chiffres de 1 à 5. Ajoutez le chiffre 6 à la fin et affichez la liste. Saisissez votre code ci-dessous :</p>
-            <textarea id="userCode" rows="4" cols="50" placeholder="nombres = [1, 2, 3, 4, 5]
+        <p>Dans cet exemple, <code>fruits</code> est une liste contenant trois éléments : "pomme", "banane" et "cerise".</p>
+
+        <h3>2.1 Accéder aux éléments d'une liste</h3>
+        <p>Vous pouvez accéder à un élément d'une liste en utilisant son index. Rappel : l'index commence à 0.</p>
+        <pre>
+# Accéder à un élément
+print(fruits[0])  # Affiche "pomme"
+print(fruits[1])  # Affiche "banane"
+        </pre>
+
+        <h2>3. Ajouter des éléments dans une Liste</h2>
+        <p>Les éléments peuvent être ajoutés à une liste avec la méthode <code>append()</code> :</p>
+        <pre>
+fruits.append("orange")
+print(fruits)  # Affiche ["pomme", "banane", "cerise", "orange"]
+        </pre>
+
+        <h3>3.1 Ajouter plusieurs éléments à la fois</h3>
+        <p>Vous pouvez aussi ajouter plusieurs éléments à une liste avec la méthode <code>extend()</code> :</p>
+        <pre>
+fruits.extend(["kiwi", "mangue"])
+print(fruits)  # Affiche ["pomme", "banane", "cerise", "orange", "kiwi", "mangue"]
+        </pre>
+
+        <h3>3.2 Insérer un élément à une position spécifique</h3>
+        <p>Utilisez la méthode <code>insert()</code> pour insérer un élément à une position précise dans la liste :</p>
+        <pre>
+fruits.insert(1, "fraise")
+print(fruits)  # Affiche ["pomme", "fraise", "banane", "cerise", "orange", "kiwi", "mangue"]
+        </pre>
+
+        <h2>4. Supprimer des éléments d'une Liste</h2>
+        <p>Vous pouvez supprimer des éléments d'une liste de différentes manières :</p>
+        <ul>
+            <li><code>remove()</code> : supprime le premier élément qui correspond à la valeur donnée.</li>
+            <li><code>pop()</code> : supprime un élément à un index spécifique (ou le dernier élément si l'index est omis).</li>
+            <li><code>clear()</code> : supprime tous les éléments de la liste.</li>
+        </ul>
+        <pre>
+# Supprimer un élément
+fruits.remove("banane")
+print(fruits)  # Affiche ["pomme", "fraise", "cerise", "orange", "kiwi", "mangue"]
+
+# Supprimer l'élément à l'index 2
+fruits.pop(2)
+print(fruits)  # Affiche ["pomme", "fraise", "orange", "kiwi", "mangue"]
+
+# Supprimer tous les éléments
+fruits.clear()
+print(fruits)  # Affiche []
+        </pre>
+
+        <h2>5. Itérer sur une Liste</h2>
+        <p>Les boucles sont souvent utilisées pour itérer sur les éléments d'une liste. Vous pouvez utiliser une boucle <code>for</code> pour accéder à chaque élément :</p>
+        <pre>
+for fruit in fruits:
+    print(fruit)
+        </pre>
+        <p>Ce code affiche chaque fruit de la liste.</p>
+
+        <h2>6. Exercice Interactif</h2>
+        <p>Créez une liste appelée <code>nombres</code> contenant les chiffres de 1 à 5. Ajoutez le chiffre 6 à la fin et affichez la liste. Saisissez votre code ci-dessous :</p>
+        <textarea id="userCode" rows="6" cols="60" placeholder="nombres = [1, 2, 3, 4, 5]
 nombres.append(6)
-print(nombres)">
-            </textarea>
-            <br>
-            <button onclick="checkExercise()">Vérifier</button>
-            <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
-            <a id="nextLesson" href="lesson8.html">Leçon suivante</a>
-        </div>
+print(nombres)"></textarea>
+        <br>
+        <button onclick="checkExercise()">Vérifier</button>
+        <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
+        <a id="nextLesson" href="lesson8.html">Leçon suivante</a>
+
+        <h2>7. Exercices Supplémentaires</h2>
+        <ul>
+            <li><strong>Exercice 1 :</strong> Créez une liste contenant les 10 premiers nombres pairs, puis ajoutez le nombre 12 à la fin.</li>
+            <li><strong>Exercice 2 :</strong> Créez une liste de vos films préférés et ajoutez un film supplémentaire à la fin.</li>
+            <li><strong>Exercice 3 :</strong> Créez une liste de vos livres préférés et affichez tous les livres sauf le premier.</li>
+        </ul>
+
+        <h2>8. Défis Supplémentaires</h2>
+        <ul>
+            <li><strong>Défi 1 :</strong> Créez une fonction qui prend une liste de nombres en entrée et retourne la somme de ces nombres.</li>
+            <li><strong>Défi 2 :</strong> Créez une fonction qui prend une liste de chaînes de caractères et retourne la plus longue chaîne.</li>
+            <li><strong>Défi 3 :</strong> Créez une fonction qui trie une liste d'entiers en ordre croissant et retourne la liste triée.</li>
+        </ul>
     </div>
     <script>
         function checkExercise() {
