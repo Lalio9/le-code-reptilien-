@@ -21,6 +21,9 @@
             margin: 0;
             font-size: 2.5em;
         }
+        h2, h3 {
+            margin-top: 20px;
+        }
         p {
             font-size: 1.2em;
             margin: 20px 0;
@@ -30,14 +33,26 @@
             padding: 20px;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
-            max-width: 800px;
+            max-width: 900px;
+            text-align: left;
+        }
+        pre {
+            background: black;
+            color: lightgreen;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        ul {
+            line-height: 1.8;
         }
         .exercise {
             margin: 20px 0;
+            text-align: center;
         }
         #successMessage {
             display: none;
-            color: pink;
+            color: lightgreen;
             font-size: 1.5em;
             margin: 20px 0;
         }
@@ -60,28 +75,141 @@
         <h1>Leçon 10 : Modules</h1>
     </header>
     <div class="content">
-        <p>Les modules en Python vous permettent de réutiliser du code. Voici un exemple d'importation de module :</p>
-        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
+        <h2>1. Introduction aux Modules</h2>
+        <p>Un module est un fichier contenant du code Python qui peut être réutilisé dans différents programmes. L'utilisation des modules vous permet de structurer votre code, de le rendre plus lisible et d'éviter les répétitions.</p>
+        <p>En Python, vous pouvez importer des modules standard (comme <code>math</code>, <code>random</code>, etc.) ou créer vos propres modules.</p>
+
+        <h2>2. Importation d'un Module</h2>
+        <p>Pour importer un module en Python, vous utilisez le mot-clé <code>import</code>. Voici un exemple simple d'importation du module <code>math</code>, qui fournit des fonctions pour les calculs mathématiques :</p>
+        <pre>
 # Exemple d'importation
 import math
-print(math.sqrt(16))
+print(math.sqrt(16))  # Affiche la racine carrée de 16
         </pre>
-        <div class="exercise">
-            <p><strong>Exercice :</strong></p>
-            <p>Importez le module `math` et affichez la racine carrée de 25. Saisissez votre code ci-dessous :</p>
-            <textarea id="userCode" rows="4" cols="50" placeholder="import math
-print(math.sqrt(25))">
-            </textarea>
-            <br>
-            <button onclick="checkExercise()">Vérifier</button>
-            <p id="successMessage">Félicitations ! Vous avez terminé !</p>
-        </div>
+        <p>Le module <code>math</code> contient de nombreuses fonctions utiles, comme <code>sqrt()</code> pour la racine carrée, <code>pow()</code> pour l'exponentiation, etc.</p>
+
+        <h3>2.1 Importation avec un Alias</h3>
+        <p>Il est également possible d'importer un module en lui donnant un alias pour simplifier son utilisation. Cela est particulièrement utile pour les modules dont les noms sont longs :</p>
+        <pre>
+import math as m
+print(m.sqrt(16))  # Affiche la racine carrée de 16 avec l'alias 'm'
+        </pre>
+        <p>Dans cet exemple, le module <code>math</code> est importé sous l'alias <code>m</code>, ce qui rend son utilisation plus concise.</p>
+
+        <h2>3. Importation de Fonctions Spécifiques d'un Module</h2>
+        <p>Vous pouvez également importer seulement des fonctions spécifiques d'un module, plutôt que d'importer l'ensemble du module. Cela permet d'économiser de la mémoire et de rendre le code plus clair.</p>
+        <pre>
+from math import sqrt
+print(sqrt(16))  # Affiche la racine carrée de 16 sans préfixe 'math.'
+        </pre>
+        <p>Dans cet exemple, seule la fonction <code>sqrt()</code> du module <code>math</code> est importée, et vous n'avez pas besoin de préfixer <code>math.</code> pour l'utiliser.</p>
+
+        <h3>3.1 Importation de Plusieurs Fonctions</h3>
+        <p>Vous pouvez également importer plusieurs fonctions spécifiques d'un module en les séparant par des virgules :</p>
+        <pre>
+from math import sqrt, pow
+print(sqrt(16))  # Affiche la racine carrée de 16
+print(pow(2, 3))  # Affiche 2^3 = 8
+        </pre>
+        <p>Dans cet exemple, <code>sqrt()</code> et <code>pow()</code> sont importées et utilisées sans préfixe.</p>
+
+        <h2>4. Créer Votre Propre Module</h2>
+        <p>En plus des modules intégrés, vous pouvez également créer vos propres modules. Un module est simplement un fichier Python (.py) contenant du code. Par exemple, vous pouvez créer un module appelé <code>monmodule.py</code> :</p>
+        <pre>
+# monmodule.py
+def dire_bonjour():
+    print("Bonjour !")
+        
+def ajouter(a, b):
+    return a + b
+        </pre>
+        <p>Pour utiliser ce module dans un autre fichier Python, vous devez l'importer de la même manière que les modules standards :</p>
+        <pre>
+# main.py
+import monmodule
+monmodule.dire_bonjour()  # Appelle la fonction du module
+print(monmodule.ajouter(3, 4))  # Affiche 7
+        </pre>
+        <p>Assurez-vous que <code>monmodule.py</code> se trouve dans le même répertoire que le fichier où vous l'importez, ou que son chemin d'accès soit inclus dans la variable d'environnement <code>PYTHONPATH</code>.</p>
+
+        <h2>5. Organiser les Modules avec des Packages</h2>
+        <p>Les packages sont des répertoires contenant des modules et un fichier spécial appelé <code>__init__.py</code>. Cela permet de structurer le code en groupes logiques.</p>
+        <pre>
+monpackage/
+    __init__.py
+    module1.py
+    module2.py
+        </pre>
+        <p>Vous pouvez ensuite importer les modules de ce package de cette manière :</p>
+        <pre>
+from monpackage import module1
+module1.ma_fonction()
+        </pre>
+        <p>Les packages vous aident à organiser votre code de manière plus modulable, surtout dans les projets de grande envergure.</p>
+
+        <h2>6. Modules Standard en Python</h2>
+        <p>Python fournit de nombreux modules intégrés, appelés modules standard. Voici quelques exemples populaires :</p>
+        <ul>
+            <li><code>math</code> : Fonctions mathématiques avancées (racine carrée, trigonométrie, etc.)</li>
+            <li><code>random</code> : Génération de nombres aléatoires</li>
+            <li><code>datetime</code> : Manipulation de dates et heures</li>
+            <li><code>os</code> : Interaction avec le système d'exploitation (fichiers, répertoires, etc.)</li>
+            <li><code>sys</code> : Interaction avec le système et l'environnement d'exécution</li>
+        </ul>
+        <p>Ces modules sont installés par défaut avec Python et sont disponibles immédiatement pour une utilisation.</p>
+
+        <h3>6.1 Exemple avec le Module <code>random</code></h3>
+        <p>Voici un exemple d'utilisation du module <code>random</code> pour générer un nombre aléatoire :</p>
+        <pre>
+import random
+nombre_aleatoire = random.randint(1, 100)  # Génère un nombre entre 1 et 100
+print(nombre_aleatoire)
+        </pre>
+
+        <h2>7. Gestion des Erreurs dans les Modules</h2>
+        <p>Parfois, des erreurs peuvent survenir lors de l'importation ou de l'utilisation de modules. Voici quelques exemples d'erreurs courantes :</p>
+        <ul>
+            <li><strong>ModuleNotFoundError</strong> : Se produit si le module que vous essayez d'importer n'existe pas.</li>
+            <li><strong>ImportError</strong> : Se produit si un module existe mais qu'il y a un problème avec son importation (par exemple, une fonction ou un objet manquant).</li>
+        </ul>
+        <p>Il est important de gérer ces erreurs correctement en utilisant des blocs <code>try-except</code>.</p>
+
+        <h2>8. Exercices Interactifs</h2>
+        <p><strong>Exercice 1 :</strong> Importez le module <code>math</code> et affichez la racine carrée de 25. Saisissez votre code ci-dessous :</p>
+        <textarea id="userCode1" rows="4" cols="50" placeholder="import math\nprint(math.sqrt(25))"></textarea>
+        <br>
+        <button onclick="checkExercise1()">Vérifier</button>
+        <p id="successMessage1" style="display:none;">Félicitations ! Vous avez réussi l'exercice 1.</p>
+
+        <p><strong>Exercice 2 :</strong> Créez un module appelé <code>calculs.py</code> qui contient une fonction <code>addition(a, b)</code> et importez-le dans ce fichier pour l'utiliser. Saisissez votre code ci-dessous :</p>
+        <textarea id="userCode2" rows="4" cols="50" placeholder="import calculs\nprint(calculs.addition(5, 3))"></textarea>
+        <br>
+        <button onclick="checkExercise2()">Vérifier</button>
+        <p id="successMessage2" style="display:none;">Félicitations ! Vous avez réussi l'exercice 2.</p>
+
+        <h2>9. Conclusion</h2>
+        <p>Les modules sont une partie essentielle du développement Python, car ils permettent de mieux organiser et réutiliser votre code. En maîtrisant l'importation et l'utilisation de modules, vous allez pouvoir créer des programmes plus robustes et modulaires.</p>
+        <p><strong>Leçon suivante :</strong> Vous pouvez explorer les fonctions plus avancées en Python !</p>
+        <a id="nextLesson" href="lesson11.html">Passer à la leçon suivante</a>
     </div>
+
     <script>
-        function checkExercise() {
-            const userCode = document.getElementById('userCode').value.trim();
+        function checkExercise1() {
+            const userCode = document.getElementById('userCode1').value.trim();
             const correctAnswer = "import math\nprint(math.sqrt(25))";
-            const successMessage = document.getElementById('successMessage');
+            const successMessage = document.getElementById('successMessage1');
+
+            if (userCode === correctAnswer) {
+                successMessage.style.display = 'block';
+            } else {
+                alert('Votre réponse est incorrecte. Essayez encore !');
+            }
+        }
+
+        function checkExercise2() {
+            const userCode = document.getElementById('userCode2').value.trim();
+            const correctAnswer = "import calculs\nprint(calculs.addition(5, 3))";
+            const successMessage = document.getElementById('successMessage2');
 
             if (userCode === correctAnswer) {
                 successMessage.style.display = 'block';
