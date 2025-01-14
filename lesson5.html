@@ -21,37 +21,27 @@
             margin: 0;
             font-size: 2.5em;
         }
-        p {
-            font-size: 1.2em;
-            margin: 20px 0;
-        }
         .content {
             margin: 20px auto;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
-            max-width: 800px;
+            max-width: 900px;
+            text-align: left;
+        }
+        pre {
+            background: black;
+            color: lightgreen;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        ul {
+            line-height: 1.8;
         }
         .exercise {
             margin: 20px 0;
-        }
-        #successMessage {
-            display: none;
-            color: pink;
-            font-size: 1.5em;
-            margin: 20px 0;
-        }
-        #nextLesson {
-            display: none;
-            padding: 10px 20px;
-            background-color: green;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-        }
-        #nextLesson:hover {
-            background-color: darkgreen;
+            text-align: center;
         }
     </style>
 </head>
@@ -60,39 +50,120 @@
         <h1>Leçon 5 : Boucles (for et while)</h1>
     </header>
     <div class="content">
-        <p>Les boucles permettent d'exécuter un bloc de code plusieurs fois. Voici un exemple d'utilisation de la boucle `for` et `while` :</p>
-        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
-# Boucle for
+        <h2>Introduction</h2>
+        <p>Les boucles sont un outil fondamental en programmation. Elles permettent de répéter une séquence d'instructions jusqu'à ce qu'une condition soit remplie. En Python, deux types de boucles sont principalement utilisés : <code>for</code> et <code>while</code>.</p>
+
+        <h2>1. La boucle <code>for</code></h2>
+        <p>La boucle <code>for</code> est utilisée pour itérer sur une séquence (comme une liste, une chaîne de caractères, ou une plage de nombres). Voici la syntaxe générale :</p>
+        <pre>
+for variable in sequence:
+    # Instructions à exécuter à chaque itération
+        </pre>
+        <p>Exemple :</p>
+        <pre>
+# Afficher les éléments d'une liste
+fruits = ["pomme", "banane", "cerise"]
+for fruit in fruits:
+    print(fruit)
+        </pre>
+
+        <h3>1.1 Utilisation de <code>range()</code></h3>
+        <p>La fonction <code>range()</code> est très utile pour générer des séquences de nombres :</p>
+        <pre>
+# Afficher les nombres de 0 à 4
 for i in range(5):
     print(i)
 
-# Boucle while
-i = 0
-while i < 5:
+# Afficher les nombres de 1 à 10
+for i in range(1, 11):
+    print(i)
+        </pre>
+
+        <h3>1.2 Boucle imbriquée</h3>
+        <p>Une boucle <code>for</code> peut être imbriquée dans une autre boucle :</p>
+        <pre>
+# Afficher un tableau de multiplication
+for i in range(1, 4):
+    for j in range(1, 4):
+        print(f"{i} x {j} = {i * j}")
+    print("---")
+        </pre>
+
+        <h2>2. La boucle <code>while</code></h2>
+        <p>La boucle <code>while</code> continue d'exécuter un bloc de code tant qu'une condition reste vraie. Voici la syntaxe générale :</p>
+        <pre>
+while condition:
+    # Instructions à exécuter tant que la condition est vraie
+        </pre>
+        <p>Exemple :</p>
+        <pre>
+# Afficher les nombres de 1 à 5
+i = 1
+while i <= 5:
     print(i)
     i += 1
         </pre>
-        <div class="exercise">
-            <p><strong>Exercice :</strong></p>
-            <p>Créez une boucle `for` qui affiche les nombres de 1 à 10. Saisissez votre code ci-dessous :</p>
-            <textarea id="userCode" rows="4" cols="50" placeholder="for i in range(1, 11):
-    print(i)"></textarea>
-            <br>
-            <button onclick="checkExercise()">Vérifier</button>
-            <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
-            <a id="nextLesson" href="lesson6.html">Leçon suivante</a>
-        </div>
+
+        <h3>2.1 Boucles infinies</h3>
+        <p>Une boucle <code>while</code> peut devenir infinie si la condition reste toujours vraie. Assurez-vous de définir une condition d'arrêt :</p>
+        <pre>
+# Attention : boucle infinie (à éviter)
+while True:
+    print("Ceci est une boucle infinie.")
+        </pre>
+
+        <h2>3. Instructions spéciales dans les boucles</h2>
+        <p>Python propose des instructions spéciales pour gérer le comportement des boucles :</p>
+        <ul>
+            <li><code>break</code> : Permet de sortir prématurément d'une boucle.</li>
+            <li><code>continue</code> : Saute à l'itération suivante sans exécuter les instructions restantes.</li>
+            <li><code>else</code> : S'exécute si la boucle termine normalement (sans <code>break</code>).</li>
+        </ul>
+        <p>Exemple :</p>
+        <pre>
+# Utilisation de break
+for i in range(10):
+    if i == 5:
+        break
+    print(i)
+
+# Utilisation de continue
+for i in range(10):
+    if i % 2 == 0:
+        continue
+    print(i)
+
+# Utilisation de else
+for i in range(5):
+    print(i)
+else:
+    print("Boucle terminée.")
+        </pre>
+
+        <h2>4. Exercice interactif</h2>
+        <p>Créez une boucle <code>for</code> qui affiche tous les nombres pairs de 1 à 20. Saisissez votre code ci-dessous :</p>
+        <textarea id="userCode" rows="6" cols="60" placeholder="for i in range(1, 21):\n    if i % 2 == 0:\n        print(i)"></textarea>
+        <br>
+        <button onclick="checkExercise()">Vérifier</button>
+        <p id="successMessage" style="display:none; color: lightgreen;">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
+        <a id="nextLesson" href="lesson6.html" style="display:none; color: white; background: green; padding: 10px; border-radius: 5px;">Leçon suivante</a>
+
+        <h2>5. Exercices supplémentaires</h2>
+        <p>Pour pratiquer, essayez de résoudre ces exercices :</p>
+        <ul>
+            <li><strong>Exercice 1 :</strong> Écrivez une boucle <code>while</code> qui affiche les puissances de 2 jusqu'à 1024.</li>
+            <li><strong>Exercice 2 :</strong> Écrivez un programme qui génère un triangle de nombres avec une boucle imbriquée.</li>
+            <li><strong>Exercice 3 :</strong> Trouvez le premier nombre divisible par 7 et 5 entre 1 et 100.</li>
+        </ul>
+        <p>Bonne chance !</p>
     </div>
     <script>
         function checkExercise() {
             const userCode = document.getElementById('userCode').value.trim();
-            const correctAnswer = "for i in range(1, 11):\n    print(i)";
-            const successMessage = document.getElementById('successMessage');
-            const nextLesson = document.getElementById('nextLesson');
-
+            const correctAnswer = "for i in range(1, 21):\n    if i % 2 == 0:\n        print(i)";
             if (userCode === correctAnswer) {
-                successMessage.style.display = 'block';
-                nextLesson.style.display = 'inline-block';
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('nextLesson').style.display = 'inline-block';
             } else {
                 alert('Votre réponse est incorrecte. Essayez encore !');
             }
@@ -100,3 +171,5 @@ while i < 5:
     </script>
 </body>
 </html>
+
+    
