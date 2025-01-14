@@ -21,37 +21,26 @@
             margin: 0;
             font-size: 2.5em;
         }
-        p {
-            font-size: 1.2em;
-            margin: 20px 0;
-        }
         .content {
             margin: 20px auto;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
-            max-width: 800px;
+            max-width: 900px;
+            text-align: left;
+        }
+        pre {
+            background: black;
+            color: lightgreen;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        ul {
+            line-height: 1.8;
         }
         .exercise {
-            margin: 20px 0;
-        }
-        #successMessage {
-            display: none;
-            color: pink;
-            font-size: 1.5em;
-            margin: 20px 0;
-        }
-        #nextLesson {
-            display: none;
-            padding: 10px 20px;
-            background-color: green;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-        }
-        #nextLesson:hover {
-            background-color: darkgreen;
+            margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
@@ -60,42 +49,115 @@
         <h1>Leçon 3 : Opérations de Base</h1>
     </header>
     <div class="content">
-        <p>Les opérateurs en Python permettent d'effectuer des calculs mathématiques, des comparaisons et des opérations logiques. Voici quelques exemples : </p>
-        <pre style="background: black; color: lightgreen; padding: 10px; text-align: left;">
-# Opérations mathématiques
-somme = 10 + 5
-produit = 10 * 5
-puissance = 2 ** 3
+        <h2>Introduction</h2>
+        <p>Les opérations sont au cœur de la programmation. En Python, les opérateurs vous permettent de manipuler des données et de prendre des décisions. Cette leçon couvre :</p>
+        <ul>
+            <li>Les opérateurs arithmétiques</li>
+            <li>Les opérateurs de comparaison</li>
+            <li>Les opérateurs logiques</li>
+            <li>Les opérateurs d'affectation</li>
+        </ul>
 
-# Comparaisons
-print(10 > 5)  # True
-print(10 == 5)  # False
-
-# Opérations logiques
-print(True and False)  # False
-print(True or False)  # True
+        <h2>1. Opérateurs Arithmétiques</h2>
+        <p>Ces opérateurs sont utilisés pour effectuer des calculs mathématiques :</p>
+        <ul>
+            <li><code>+</code> : Addition</li>
+            <li><code>-</code> : Soustraction</li>
+            <li><code>*</code> : Multiplication</li>
+            <li><code>/</code> : Division</li>
+            <li><code>**</code> : Exponentiation</li>
+            <li><code>%</code> : Modulo (reste de la division)</li>
+            <li><code>//</code> : Division entière</li>
+        </ul>
+        <pre>
+# Exemples
+a = 10
+b = 3
+print(a + b)   # Addition: 13
+print(a - b)   # Soustraction: 7
+print(a * b)   # Multiplication: 30
+print(a / b)   # Division: 3.333...
+print(a // b)  # Division entière: 3
+print(a % b)   # Modulo: 1
+print(a ** b)  # Exponentiation: 1000
         </pre>
-        <div class="exercise">
-            <p><strong>Exercice :</strong></p>
-            <p>Calculez le carré de 4 en utilisant l'opérateur d'exponentiation (**). Affichez le résultat. Saisissez votre code ci-dessous :</p>
-            <textarea id="userCode" rows="4" cols="50" placeholder="resultat = 4 ** 2
-print(resultat)"></textarea>
-            <br>
-            <button onclick="checkExercise()">Vérifier</button>
-            <p id="successMessage">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
-            <a id="nextLesson" href="lesson4.html">Leçon suivante</a>
-        </div>
+
+        <h2>2. Opérateurs de Comparaison</h2>
+        <p>Ces opérateurs permettent de comparer deux valeurs et renvoient <code>True</code> ou <code>False</code>.</p>
+        <ul>
+            <li><code>==</code> : Égal à</li>
+            <li><code>!=</code> : Différent de</li>
+            <li><code>&gt;</code> : Supérieur à</li>
+            <li><code>&lt;</code> : Inférieur à</li>
+            <li><code>&gt;=</code> : Supérieur ou égal à</li>
+            <li><code>&lt;=</code> : Inférieur ou égal à</li>
+        </ul>
+        <pre>
+# Exemples
+x = 5
+y = 10
+print(x == y)  # False
+print(x != y)  # True
+print(x > y)   # False
+print(x < y)   # True
+print(x >= 5)  # True
+print(x <= 4)  # False
+        </pre>
+
+        <h2>3. Opérateurs Logiques</h2>
+        <p>Ces opérateurs permettent de combiner plusieurs conditions :</p>
+        <ul>
+            <li><code>and</code> : Renvoie <code>True</code> si toutes les conditions sont vraies.</li>
+            <li><code>or</code> : Renvoie <code>True</code> si au moins une condition est vraie.</li>
+            <li><code>not</code> : Inverse la valeur d'une condition.</li>
+        </ul>
+        <pre>
+# Exemples
+a = True
+b = False
+print(a and b)  # False
+print(a or b)   # True
+print(not a)    # False
+        </pre>
+
+        <h2>4. Opérateurs d'Affectation</h2>
+        <p>Ils sont utilisés pour attribuer des valeurs à des variables, avec des variantes pour effectuer des calculs en même temps :</p>
+        <ul>
+            <li><code>=</code> : Affectation simple</li>
+            <li><code>+=</code> : Addition et affectation</li>
+            <li><code>-=</code> : Soustraction et affectation</li>
+            <li><code>*=</code> : Multiplication et affectation</li>
+            <li><code>/=</code> : Division et affectation</li>
+        </ul>
+        <pre>
+# Exemples
+x = 5
+x += 3  # x = x + 3
+print(x)  # 8
+x *= 2  # x = x * 2
+print(x)  # 16
+        </pre>
+
+        <h2>Exercice Pratique</h2>
+        <p>Créez un programme qui utilise :</p>
+        <ul>
+            <li>Un opérateur arithmétique (par exemple, addition ou multiplication).</li>
+            <li>Un opérateur de comparaison.</li>
+            <li>Un opérateur logique pour combiner plusieurs conditions.</li>
+        </ul>
+        <textarea id="userCode" rows="10" cols="60" placeholder="a = 10\nb = 5\nsomme = a + b\nprint(somme > 10 and b < 10)"></textarea>
+        <br><br>
+        <button onclick="checkExercise()">Vérifier</button>
+        <p id="successMessage" style="display:none; color: lightgreen;">Félicitations ! Vous pouvez passer à la leçon suivante.</p>
+        <a id="nextLesson" href="lesson4.html" style="display:none; color: white; background: green; padding: 10px; border-radius: 5px;">Leçon suivante</a>
     </div>
     <script>
         function checkExercise() {
             const userCode = document.getElementById('userCode').value.trim();
-            const correctAnswer = "resultat = 4 ** 2\nprint(resultat)";
-            const successMessage = document.getElementById('successMessage');
-            const nextLesson = document.getElementById('nextLesson');
-
+            const correctAnswer = `a = 10\nb = 5\nsomme = a + b\nprint(somme > 10 and b < 10)`;
             if (userCode === correctAnswer) {
-                successMessage.style.display = 'block';
-                nextLesson.style.display = 'inline-block';
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('nextLesson').style.display = 'inline-block';
             } else {
                 alert('Votre réponse est incorrecte. Essayez encore !');
             }
