@@ -7,69 +7,153 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             color: white;
             text-align: center;
-            background: green; /* Couleur temporaire */
+            background: green;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/f8/Green_Tree_Python_%28Morelia_viridis%29.jpg');
             background-repeat: no-repeat;
             background-position: center;
             background-attachment: fixed;
             background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 2s ease-out;
         }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         header {
             padding: 20px;
             background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            margin-bottom: 40px;
+            animation: slideIn 1s ease-out;
         }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         h1 {
             margin: 0;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-size: 3em;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            color: #ffcc00; /* Jaune pour attirer l'attention */
+            animation: glow 1.5s infinite alternate;
         }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+            }
+            100% {
+                text-shadow: 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+            }
+        }
+
         p {
             font-size: 1.2em;
             margin: 20px 0;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
         }
+
         .button {
             display: inline-block;
-            padding: 15px 30px;
-            background-color: green;
+            padding: 20px 40px;
+            background-color: #32CD32; /* Vert lime */
             color: white;
             text-decoration: none;
-            font-size: 1.5em;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            font-size: 1.8em;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
         }
+
         .button:hover {
             background-color: #228B22; /* Vert forêt */
             transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
+
+        .button:active {
+            transform: scale(0.9); /* Effet de pression au clic */
+        }
+
         footer {
-            padding: 10px;
+            padding: 15px;
             background: rgba(0, 0, 0, 0.6);
             color: white;
-            font-size: 0.9em;
+            font-size: 1em;
+            text-align: center;
+            margin-top: 30px;
+            border-radius: 10px;
         }
+
         footer a {
             color: lightgreen;
             text-decoration: none;
+            transition: color 0.3s;
         }
+
+        footer a:hover {
+            color: #ffcc00; /* Jaune lumineux au survol */
+        }
+
+        /* Effet de zoom sur l'image de fond */
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/f/f8/Green_Tree_Python_%28Morelia_viridis%29.jpg') center/cover no-repeat;
+            animation: zoomIn 10s infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
     </style>
 </head>
 <body>
+    <div class="background-image"></div> <!-- Zoom effect on the background image -->
     <header>
         <h1>Avec le Code Reptilien</h1>
         <p>Apprenez les bases de Python rapidement, facilement et gratuitement.</p>
         <a href="lessons.html" class="button">Commencer</a>
     </header>
     <footer>
-        <p>Crédits image : Wikipedia Commons - Python Vert</p>
+        <p>Crédits image : <a href="https://commons.wikimedia.org/wiki/File:Green_Tree_Python_(Morelia_viridis).jpg" target="_blank">Wikipedia Commons - Python Vert</a></p>
         <p>Contactez-nous à <a href="mailto:support@codereptilien.com">support@codereptilien.com</a></p>
     </footer>
 </body>
 </html>
 
- 
-  
