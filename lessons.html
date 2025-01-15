@@ -8,24 +8,32 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            color: #f0f0f0; /* Texte clair */
+            color: #f0f0f0;
             text-align: center;
-            background-color: #006400; /* Fond vert foncé */
+            background-color: #006400;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/f8/Green_Tree_Python_%28Morelia_viridis%29.jpg');
             background-size: cover;
             background-position: center;
             font-style: italic;
-            height: 100vh; /* Remplir toute la hauteur de l'écran */
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             box-sizing: border-box;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
 
         header {
             padding: 20px;
-            background: rgba(0, 0, 0, 0.6); /* Fond sombre semi-transparent pour le header */
+            background: rgba(0, 0, 0, 0.6);
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
             max-width: 90%;
@@ -34,7 +42,6 @@
         h1 {
             margin: 0;
             font-size: 3em;
-            font-family: 'Arial', sans-serif;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
             color: #ffffff;
         }
@@ -48,7 +55,7 @@
         .lesson-list {
             margin: 20px auto;
             padding: 30px;
-            background: rgba(0, 0, 0, 0.7); /* Fond sombre pour la liste des leçons */
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
             max-width: 900px;
@@ -59,7 +66,7 @@
             display: block;
             margin: 15px 0;
             padding: 15px;
-            background: #006400; /* Vert foncé pour les liens */
+            background: #006400;
             color: white;
             text-decoration: none;
             font-size: 1.5em;
@@ -69,24 +76,23 @@
         }
 
         .lesson-list a:hover {
-            background-color: #004d00; /* Vert encore plus foncé au survol */
-            transform: scale(1.05); /* Légère augmentation de la taille */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8); /* Ombre plus forte */
+            background-color: #004d00;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
         }
 
         .lesson-list a:active {
-            transform: scale(1); /* Retour à la taille initiale lors du clic */
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Ombre normale */
+            transform: scale(1);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
         }
-
     </style>
 </head>
 <body>
     <header>
         <h1>Nos Leçons</h1>
-        <p>Nos leçons sont simples et rapides et vous enseignent rapidement les bases de Python. Si vous souhaitez approfondir vos connaissances, nous recommandons de nous en avertir pour que nous créions un autre site.</p>
+        <p>Apprenez les bases de Python avec simplicité et rapidité !</p>
     </header>
-    <div class="lesson-list">
+    <div class="lesson-list" id="lesson-list">
         <a href="lesson1.html">Leçon 1 : Introduction à Python</a>
         <a href="lesson2.html">Leçon 2 : Variables et Types</a>
         <a href="lesson3.html">Leçon 3 : Structures Conditionnelles</a>
@@ -98,8 +104,31 @@
         <a href="lesson9.html">Leçon 9 : Modules</a>
         <a href="lesson10.html">Leçon 10 : Classes et Objets</a>
     </div>
+
+    <script>
+        // Changer le titre au survol des liens
+        const lessonLinks = document.querySelectorAll('.lesson-list a');
+        const originalTitle = document.title;
+
+        lessonLinks.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                document.title = `Survol : ${link.textContent}`;
+            });
+            link.addEventListener('mouseout', () => {
+                document.title = originalTitle;
+            });
+        });
+
+        // Confirmation avant de quitter la page
+        window.addEventListener('beforeunload', (event) => {
+            event.preventDefault();
+            event.returnValue = '';
+        });
+
+        // Animation de chargement
+        window.addEventListener('load', () => {
+            document.body.style.opacity = 1;
+        });
+    </script>
 </body>
 </html>
-
-       
-   
